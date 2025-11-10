@@ -1,2 +1,5 @@
-# newJobSite_5.2.5
-«URL-параметры  и search параметры»
+node -v: 24.10.0
+npm -v: 11.6.2
+
+GitHub - pages:
+
