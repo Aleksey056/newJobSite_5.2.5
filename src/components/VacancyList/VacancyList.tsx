@@ -20,7 +20,7 @@ const VacancyList = () => {
 
 	return (
 		<Box className={styles.moduleVacancyList}>
-			{status === 'loading' && <Loader color='cyan' size="xl" type="dots" />}
+			{status === 'loading' && <Loader color='cyan' size="xl" type="dots" w={659} />}
 			{status === 'failed' && <Text>{error}</Text>}
 			{status === 'succeeded' && items.length === 0 && <Text>Вакансии не найдены</Text>}
 			{status === 'succeeded' &&

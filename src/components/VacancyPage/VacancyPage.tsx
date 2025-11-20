@@ -6,21 +6,23 @@ export type VacancyPageParams = {
 	id: number,
 }
 
-
 const VacancyPage = () => {
-
 	const { id } = useParams();
 
 	return (
-		<>
+		<Box className={styles.VacancyPage}>
 			<Box className={styles.boxVacancy}></Box>
 			<Box className={styles.boxInfo}>
-				<Title>Компания</Title>
-				<Text>...</Text>
-				<Title>О проекте:</Title>
-				<Text>...</Text>
+				<Box className={styles.boxInfoCampany}>
+					<Title className={styles.boxInfoCampanyTitle}>Компания</Title>
+					<Text className={styles.boxInfoCampanyText}>...</Text>
+				</Box>
+				<Box className={styles.boxInfoProject}>
+					<Title className={styles.boxInfoProjectTitle}>О проекте:</Title>
+					<Text className={styles.boxInfoProjectText}>...</Text>
+				</Box>
 			</Box>
-		</>
+		</Box>
 	)
 }
 
