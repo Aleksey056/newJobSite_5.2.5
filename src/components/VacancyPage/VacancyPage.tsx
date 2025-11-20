@@ -13,8 +13,8 @@ const VacancyPage = () => {
 
 	return (
 		<>
-			<Box className={styles.box}></Box>
-			<Box>
+			<Box className={styles.boxVacancy}></Box>
+			<Box className={styles.boxInfo}>
 				<Title>Компания</Title>
 				<Text>...</Text>
 				<Title>О проекте:</Title>

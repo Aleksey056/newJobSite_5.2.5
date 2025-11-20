@@ -3,24 +3,21 @@ import Search from "../Search/Search"
 import Skills from "../Skils/Skills"
 import CitySelect from "../CitySelect/CitySelect"
 import VacancyList from "../VacancyList/VacancyList"
-
+import styles from './HomePage.module.css'
 
 const HomePage = () => {
 	return (
-		<>
+		<Box >
 			<Search />
 			<Divider c={'#0F0F1033'} />
-			<Box className='main'>
-				<Box className='main__left-section'>
+			<Box className={styles.homePage}>
+				<Box className={styles.mainLeftSection}>
 					<Skills />
 					<CitySelect />
 				</Box>
-				<Box className='main__right-section'>
-					<VacancyList />
-				</Box>
+				<VacancyList />
 			</Box>
-		</>
-
+		</Box>
 	)
 }
 
