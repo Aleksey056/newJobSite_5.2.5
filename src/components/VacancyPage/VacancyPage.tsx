@@ -7,7 +7,7 @@ export type VacancyPageParams = {
 }
 
 const VacancyPage = () => {
-	// const { id } = useParams({ id });
+	const { id } = useParams({ vacancyId });
 	// console.log(id);
 
 
@@ -17,7 +17,7 @@ const VacancyPage = () => {
 			<Box className={styles.boxInfo}>
 				<Box className={styles.boxInfoCampany}>
 					<Title className={styles.boxInfoCampanyTitle}>Компания</Title>
-					<Text className={styles.boxInfoCampanyText}>...</Text>
+					<Text className={styles.boxInfoCampanyText}>vacancy ID : {id}</Text>
 				</Box>
 				<Box className={styles.boxInfoProject}>
 					<Title className={styles.boxInfoProjectTitle}>О проекте:</Title>

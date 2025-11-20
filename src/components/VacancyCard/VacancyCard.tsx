@@ -61,7 +61,7 @@ const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 			</Box>
 
 			<Box className={styles.buttonGroup}>
-				<Link to='/vacancies'> | vacancyId={vacancy.id}
+				<Link to='/vacancies' vacancyId={vacancy.id}>
 					<Button variant="filled" size="sm" color="black" fw={400}>Смотреть вакансию</Button>
 				</Link>
 
