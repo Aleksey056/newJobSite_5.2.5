@@ -7,7 +7,9 @@ export type VacancyPageParams = {
 }
 
 const VacancyPage = () => {
-	const { id } = useParams();
+	// const { id } = useParams({ id });
+	// console.log(id);
+
 
 	return (
 		<Box className={styles.VacancyPage}>
