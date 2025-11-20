@@ -1,15 +1,19 @@
 import { Box, Text, Title } from '@mantine/core'
 import styles from './VacancyPage.module.css'
+import { useParams } from 'react-router'
 
-export type VacancyPage = {
+export type VacancyPageParams = {
 	id: number,
 }
 
 
-const VacancyPage = (id: VacancyPage) => {
+const VacancyPage = () => {
+
+	const { id } = useParams();
+
 	return (
 		<>
-			<Box></Box>
+			<Box className={styles.box}></Box>
 			<Box>
 				<Title>Компания</Title>
 				<Text>...</Text>

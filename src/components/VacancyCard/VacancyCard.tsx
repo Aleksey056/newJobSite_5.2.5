@@ -1,6 +1,7 @@
 import { Badge, Box, Button, Text } from '@mantine/core';
 import styles from './VacancyCard.module.css'
 import type { CardVacancyProps, WorkFormat } from '../../types/vacancy';
+import { Link } from 'react-router';
 
 const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 
@@ -60,7 +61,10 @@ const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 			</Box>
 
 			<Box className={styles.buttonGroup}>
-				<Button variant="filled" size="sm" color="black" fw={400}>Смотреть вакансию</Button>
+				<Link to='/vacancies'>
+					<Button variant="filled" size="sm" color="black" fw={400}>Смотреть вакансию</Button>
+				</Link>
+
 				<Button
 					size="sm"
 					variant="light"

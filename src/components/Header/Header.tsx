@@ -3,6 +3,7 @@ import logo from '../../assets/logo_hh.svg'
 import userLogo from '../../assets/user-circle.svg'
 import ellipse from '../../assets/Ellipse.svg'
 import styles from './Header.module.css'
+import { Link } from 'react-router'
 
 export default function Header() {
 	return (
@@ -17,9 +18,9 @@ export default function Header() {
 			</Box>
 			<Box className={styles.block2}>
 				<Box className={styles.jobs}>
-					<Text className={styles.jobs__text}>
+					<Link to='/' className={styles.jobs__text}>
 						Вакансии FE
-					</Text>
+					</Link>
 					<Image className={styles.ellipse} src={ellipse} />
 				</Box>
 				<Box className={styles.userInfo}>
