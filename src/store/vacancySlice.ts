@@ -31,6 +31,29 @@ export const vacancyFetch = createAsyncThunk(
 	}
 )
 
+export const fetchVacanciById = createAsyncThunk(
+	'vacancy/fetchVacanciById',
+	async (id: string, { rejectWithValue }) => {
+		try {
+			const response = await fetch(`https://api.hh.ru/vacancies/${id}`)
+			if (!response.ok) throw new Error("Ошибка в получении данных");
+			const data = await response.json()
+
+			const result = {
+				...data,
+				snippet: {
+					requirement: data.snippet?.requirement || data.description || 'Не указано',
+					responsibility: data.snippet?.responsibility || data.description || 'Не указано',
+				},
+			}
+
+			return result;
+		} catch (error: any) {
+			return rejectWithValue(error.message)
+		}
+	}
+)
+
 const initialState: initialStateType = {
 	items: [],
 	status: 'idle',
@@ -69,6 +92,9 @@ const vacancySlice = createSlice({
 		builder.addCase(vacancyFetch.rejected, (state, action) => {
 			state.status = 'failed'
 			state.error = action.error.message || 'Ошибка в запросе данных с сервера'
+		})
+		builder.addCase(fetchVacanciById.fulfilled, (state, action) => {
+			state.items = action.payload
 		})
 	}
 })

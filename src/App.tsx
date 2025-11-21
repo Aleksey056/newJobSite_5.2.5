@@ -11,7 +11,7 @@ function App() {
 			<Header />
 			<Routes>
 				<Route path='/' element={<HomePage />} />
-				<Route path='/vacancies' element={<VacancyPage />} />
+				<Route path='vacancies/:id' element={<VacancyPage />} />
 				<Route path='*' element={<Navigate to='/' replace />} />
 			</Routes>
 		</>
