@@ -39,15 +39,15 @@ export const fetchVacanciById = createAsyncThunk(
 			if (!response.ok) throw new Error("Ошибка в получении данных");
 			const data = await response.json()
 
-			// const result = {
-			// 	...data,
-			// 	snippet: {
-			// 		requirement: data.snippet?.requirement || data.description || 'Не указано',
-			// 		responsibility: data.snippet?.responsibility || data.description || 'Не указано',
-			// 	},
-			// }
+			const result = {
+				...data,
+				snippet: {
+					requirement: data.snippet?.requirement || data.description || 'Не указано',
+					responsibility: data.snippet?.responsibility || data.description || 'Не указано',
+				},
+			}
 
-			return data;
+			return result;
 		} catch (error: any) {
 			return rejectWithValue(error.message)
 		}
@@ -60,6 +60,7 @@ const initialState: initialStateType = {
 	error: null,
 	totalPages: 0,
 	currentPage: 1,
+	vacancyId: null,
 	filters: {
 		searchText: '',
 		searchCity: '',
@@ -94,7 +95,7 @@ const vacancySlice = createSlice({
 			state.error = action.error.message || 'Ошибка в запросе данных с сервера'
 		})
 		builder.addCase(fetchVacanciById.fulfilled, (state, action) => {
-			state.items = action.payload
+			state.vacancyId = action.payload
 		})
 	}
 })

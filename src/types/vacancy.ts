@@ -7,11 +7,12 @@ export type Vacancy = {
 	id: string | number;
 	name: string;
 	salary: | string | { from?: number; to?: number; currency?: string } | null;
-	experience: string | { name: string } | null;
+	experience?: string | { name: string } | null;
 	employer?: { name: string; } | null;
 	work_format?: WorkFormat[];
 	area?: { name: string; } | null;
 	alternate_url: string;
+	description?: string,
 }
 
 export type vacancyFetchType = {
@@ -27,6 +28,7 @@ export type initialStateType = {
 	error: null | string,
 	totalPages: number,
 	currentPage: number,
+	vacancyId: Vacancy | null,
 	filters: {
 		searchText: string,
 		searchCity: string,

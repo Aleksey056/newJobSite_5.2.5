@@ -1,33 +1,30 @@
-import { Box, Text, Title } from '@mantine/core'
+import { Box } from '@mantine/core'
 import styles from './VacancyPage.module.css'
 import { useParams } from 'react-router'
 import { useEffect } from 'react'
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux'
 import { fetchVacanciById } from '../../store/vacancySlice'
+import VacancyCard from '../VacancyCard/VacancyCard'
 
 const VacancyPage = () => {
 	const { id } = useParams();
-	const dispatch = useTypedDispatch()
-	const vacancyId = useTypedSelector(state => state.vacancy.items)
 
-	console.log(vacancyId);
+	const dispatch = useTypedDispatch()
+	const vacancy = useTypedSelector(state => state.vacancy.vacancyId)
+	console.log(vacancy);
+
 
 	useEffect(() => {
-		dispatch(fetchVacanciById(id))
+		dispatch(fetchVacanciById(id!))
 	}, [dispatch, id])
 
 	return (
 		<Box className={styles.VacancyPage}>
-			<Box className={styles.boxVacancy}></Box>
+			<Box className={styles.boxVacancy}>
+				{/* <VacancyCard {...vacancy} /> */}
+			</Box>
 			<Box className={styles.boxInfo}>
-				<Box className={styles.boxInfoCampany}>
-					<Title className={styles.boxInfoCampanyTitle}>Компания</Title>
-					<Text className={styles.boxInfoCampanyText}>vacancy ID : </Text>
-				</Box>
-				<Box className={styles.boxInfoProject}>
-					<Title className={styles.boxInfoProjectTitle}>О проекте:</Title>
-					<Text className={styles.boxInfoProjectText}>...</Text>
-				</Box>
+				<div dangerouslySetInnerHTML={{ __html: vacancy?.description || '' }} />
 			</Box>
 		</Box>
 	)

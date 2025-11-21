@@ -5,6 +5,8 @@ import { Link } from 'react-router';
 
 const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 
+	// const {id, salary, experience, } = vacancy
+
 	function formatSalary(
 		salary: string | { from?: number; to?: number; currency?: string } | null
 	): string {
