@@ -11,7 +11,6 @@ const VacancyPage = () => {
 
 	const dispatch = useTypedDispatch()
 	const vacancy = useTypedSelector(state => state.vacancy.vacancyId)
-	console.log(vacancy);
 
 	useEffect(() => {
 		dispatch(fetchVacanciById(id!))
