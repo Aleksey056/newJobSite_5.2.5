@@ -15,7 +15,7 @@ export const vacancyFetch = createAsyncThunk(
 
 			if (searchText) param.append('text', searchText)
 			if (searchCity && searchCity !== '') param.append('area', searchCity)
-			// if (searchSkills) param.append('___', searchSkills.join(',')) не нашел как вытягивать
+			// if (searchSkills) param.append('key_skills', searchSkills.join(',')) // не нашел как вытягивать
 
 			const url = `https://api.hh.ru/vacancies?${param.toString()}`
 
@@ -39,15 +39,15 @@ export const fetchVacanciById = createAsyncThunk(
 			if (!response.ok) throw new Error("Ошибка в получении данных");
 			const data = await response.json()
 
-			const result = {
-				...data,
-				snippet: {
-					requirement: data.snippet?.requirement || data.description || 'Не указано',
-					responsibility: data.snippet?.responsibility || data.description || 'Не указано',
-				},
-			}
+			// const result = {
+			// 	...data,
+			// 	snippet: {
+			// 		requirement: data.snippet?.requirement || data.description || 'Не указано',
+			// 		responsibility: data.snippet?.responsibility || data.description || 'Не указано',
+			// 	},
+			// }
 
-			return result;
+			return data;
 		} catch (error: any) {
 			return rejectWithValue(error.message)
 		}

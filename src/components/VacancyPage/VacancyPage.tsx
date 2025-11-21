@@ -12,7 +12,6 @@ const VacancyPage = () => {
 
 	console.log(vacancyId);
 
-
 	useEffect(() => {
 		dispatch(fetchVacanciById(id))
 	}, [dispatch, id])
