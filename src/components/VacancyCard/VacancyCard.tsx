@@ -1,11 +1,10 @@
 import { Badge, Box, Button, Text } from '@mantine/core';
 import styles from './VacancyCard.module.css'
-import type { CardVacancyProps, WorkFormat } from '../../types/vacancy';
+import type { WorkFormat } from '../../types/vacancy';
 import { Link } from 'react-router';
 
-const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
-
-	// const {id, salary, experience, } = vacancy
+const CardVacancy = ({ ...vacancy }) => {
+	const { name, alternate_url, id, salary, area, work_format, employer, experience } = vacancy
 
 	function formatSalary(
 		salary: string | { from?: number; to?: number; currency?: string } | null
@@ -17,7 +16,7 @@ const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 		return 'Уровень дохода не указан';
 	}
 
-	const experience = typeof vacancy.experience === 'string' ? vacancy.experience : vacancy.experience?.name || 'не указано';
+	const experienceConst = typeof experience === 'string' ? experience : experience?.name || 'не указано';
 
 	const getWorkFormatTag = (formats?: WorkFormat[]) => {
 		if (!formats || formats.length === 0) return null;
@@ -36,34 +35,34 @@ const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 		<Box className={styles.cardVacancy}>
 			<Box className={styles.head}>
 				<Text className={styles.head__name}>
-					{vacancy.name}
+					{name}
 				</Text>
 				<Box className={styles.head__total}>
 					<Text className={styles.total__salary}>
-						{formatSalary(vacancy.salary)}
+						{formatSalary(salary)}
 					</Text>
 					<Text className={styles.total__experience}>
-						{experience}
+						{experienceConst}
 					</Text>
 				</Box>
 			</Box>
 
 			<Box className={styles.info}>
 				<Text className={styles.info__employer}>
-					{vacancy.employer?.name || 'неизвестна'}
+					{employer?.name || 'неизвестна'}
 				</Text>
 				<Box>
 					<Box className={styles.info__workFormat}>
-						{getWorkFormatTag(vacancy.work_format)}
+						{getWorkFormatTag(work_format)}
 					</Box>
 					<Text className={styles.info__city}>
-						Город: {vacancy.area?.name || 'не указан'}
+						Город: {area?.name || 'не указан'}
 					</Text>
 				</Box>
 			</Box>
 
 			<Box className={styles.buttonGroup}>
-				<Link to={`/vacancies/${vacancy.id}`} >
+				<Link to={`/vacancies/${id}`} >
 					<Button variant="filled" size="sm" color="black" fw={400}>Смотреть вакансию</Button>
 				</Link>
 
@@ -72,7 +71,7 @@ const CardVacancy: React.FC<CardVacancyProps> = ({ vacancy }) => {
 					variant="light"
 					color='black'
 					component="a"
-					href={vacancy.alternate_url}
+					href={alternate_url}
 					target="_blank"
 					fw={400}
 				>

@@ -13,6 +13,7 @@ export type Vacancy = {
 	area?: { name: string; } | null;
 	alternate_url: string;
 	description?: string,
+	vacancy: string[],
 }
 
 export type vacancyFetchType = {
@@ -36,6 +37,6 @@ export type initialStateType = {
 	}
 }
 
-export type CardVacancyProps = {
-	vacancy: Vacancy;
-}
+// export type CardVacancyProps = {
+// 	vacancy: Vacancy;
+// }

@@ -13,16 +13,13 @@ const VacancyPage = () => {
 	const vacancy = useTypedSelector(state => state.vacancy.vacancyId)
 	console.log(vacancy);
 
-
 	useEffect(() => {
 		dispatch(fetchVacanciById(id!))
 	}, [dispatch, id])
 
 	return (
 		<Box className={styles.VacancyPage}>
-			<Box className={styles.boxVacancy}>
-				{/* <VacancyCard {...vacancy} /> */}
-			</Box>
+			<VacancyCard {...vacancy} />
 			<Box className={styles.boxInfo}>
 				<div dangerouslySetInnerHTML={{ __html: vacancy?.description || '' }} />
 			</Box>
