@@ -10,7 +10,6 @@ import { useEffect } from "react"
 import { setFilters } from "../../store/vacancySlice"
 
 const HomePage = () => {
-
 	const dispatch = useTypedDispatch();
 	const filters = useTypedSelector(state => state.vacancy.filters);
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -32,8 +31,6 @@ const HomePage = () => {
 
 		setSearchParams(params);
 	}, [filters.searchText, filters.searchCity]);
-
-
 
 	return (
 		<Box >
