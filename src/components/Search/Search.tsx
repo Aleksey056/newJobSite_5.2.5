@@ -1,14 +1,17 @@
 import { Box, Text, TextInput, Button, Image } from '@mantine/core';
 import styles from './Search.module.css';
 import { useState } from 'react';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
+import { useTypedDispatch } from '../../hooks/redux';
 import { setFilters } from '../../store/vacancySlice';
 import iconSearch from '../../assets/search.svg'
+import { useSearchParams } from 'react-router';
 
 const Search = () => {
 	const dispatch = useTypedDispatch()
-	const { filters } = useTypedSelector(state => state.vacancy)
-	const searchText = filters.searchText
+
+	const [searchParams,] = useSearchParams();
+	const searchText = searchParams.get('text') || '';
+
 	const [text, setText] = useState(searchText)
 
 	const setSearchText = (text: string) => {
@@ -35,7 +38,7 @@ const Search = () => {
 					className={styles.search__input}
 					onKeyDown={handleKeyDown}
 					data-testid='searchInput'
-					leftSection={<Image src={iconSearch} className={styles.iconSearch} alt='iconSearch'/>}
+					leftSection={<Image src={iconSearch} className={styles.iconSearch} alt='iconSearch' />}
 				/>
 				<Button type='submit' onClick={() => setSearchText(text)} className={styles.section1__button} data-testid='button'>
 					Найти

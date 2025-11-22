@@ -18,6 +18,11 @@ const HomePage = () => {
 		const searchText = searchParams.get('text') || '';
 		const searchCity = searchParams.get('area') || '';
 
+		// 
+		console.log('searchText', searchText);
+		console.log('searchCity', searchCity);
+		// 
+
 		if (searchText !== filters.searchText || searchCity !== filters.searchCity) {
 			dispatch(setFilters({ searchText, searchCity }));
 		}
