@@ -8,8 +8,8 @@ import { BrowserRouter } from 'react-router'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<BrowserRouter>
-			<Provider store={store}>
+		<BrowserRouter basename='/newJobSite_5.2.5'>
+			<Provider store={store} >
 				<MantineProvider>
 					<App />
 				</MantineProvider>

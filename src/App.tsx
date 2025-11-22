@@ -10,9 +10,9 @@ function App() {
 		<>
 			<Header />
 			<Routes>
-				<Route path='/' element={<HomePage />} />
-				<Route path='vacancies/:id' element={<VacancyPage />} />
-				<Route path='*' element={<Navigate to='/' replace />} />
+				<Route path='/vacancies' element={<HomePage />} />
+				<Route path='/vacancies/:id' element={<VacancyPage />} />
+				<Route path='*' element={<Navigate to='/vacancies' replace />} />
 			</Routes>
 		</>
 	)

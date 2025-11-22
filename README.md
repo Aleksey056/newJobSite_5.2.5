@@ -3,3 +3,6 @@ npm -v: 11.6.2
 
 GitHub - pages:
 
+
+убрать кнопку на VacancyPage
+

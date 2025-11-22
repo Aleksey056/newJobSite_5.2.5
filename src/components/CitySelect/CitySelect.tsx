@@ -18,7 +18,6 @@ const CitySelect = () => {
 
 	const setSearchCity = (city: string | null) => {
 		dispatch(setFilters({ searchCity: city }))
-		dispatch(setFilters({ searchText: '' }))
 	}
 
 	return (
