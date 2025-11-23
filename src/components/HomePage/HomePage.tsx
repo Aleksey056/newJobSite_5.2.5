@@ -17,30 +17,22 @@ const HomePage = () => {
 	useEffect(() => {
 		const searchText = searchParams.get('text') || '';
 		const searchCity = searchParams.get('area') || '';
-
-		// 
-		console.log('searchText', searchText);
-		console.log('searchCity', searchCity);
-		// 
-
 		if (searchText !== filters.searchText || searchCity !== filters.searchCity) {
 			dispatch(setFilters({ searchText, searchCity }));
 		}
 	}, [searchParams]);
 
-	// const searchCity = useTypedSelector(state => state.vacancy.filters.searchCity);
-	// не могу понять свой же косяк, при изменение на странице все ок по фильтрам, но если меняю через URL именно город, то как будто фильтр сбрасывается, но при этом значение такое каким и должно быть =((((
-	// Причем я вижу что сначала фильтра применяются, а потом ререндеринг как будто их нет
+	// не могу понять свой же косяк, при изменение на странице все ок по фильтрам, но если меняю через URL город или текст, то запрос посылается верный, а возвращается так будто поля searchText и searchCity не заданы
+	// Причем я вижу что сначала фильтра применяются, а потом ререндеринг как будто их нет в Redux DevTool - inspection - action - payload - alternate_url
 
-	// console.log('searchCity', searchCity);
+	// console.log('searchCity', filters.searchCity);
+	// console.log('searchText', filters.searchText);
 	// на замедление ЦП видно что происходит поиск без фильтров потом с фильтрами и потом снова бзе фильтров
 
 	useEffect(() => {
 		const params: Record<string, string> = {};
-
 		if (filters.searchText) params.text = filters.searchText;
 		if (filters.searchCity) params.area = filters.searchCity;
-
 		setSearchParams(params);
 	}, [filters.searchText, filters.searchCity]);
 

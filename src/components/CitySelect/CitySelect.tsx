@@ -1,6 +1,6 @@
 import { Image, Select } from '@mantine/core';
 import { setFilters } from '../../store/vacancySlice';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
+import { useTypedDispatch } from '../../hooks/redux';
 import styles from './CitySelect.module.css';
 import iconCitySelect from '../../assets/Vector.svg'
 import { useSearchParams } from 'react-router';
@@ -16,8 +16,6 @@ const CitySelect = () => {
 	const dispatch = useTypedDispatch()
 	const [searchParams,] = useSearchParams();
 	const searchCity = searchParams.get('area') || '';
-
-	
 
 	const setSearchCity = (city: string | null) => {
 		dispatch(setFilters({ searchCity: city }))
