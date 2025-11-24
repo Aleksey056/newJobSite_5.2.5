@@ -25,7 +25,7 @@ const VacancyList = () => {
 			{status === 'succeeded' && items.length === 0 && <Text>Вакансии не найдены</Text>}
 			{status === 'succeeded' &&
 				items.map((vacancy: Vacancy) => (
-					<CardVacancy key={vacancy.id} {...vacancy} />
+					<CardVacancy key={vacancy.id} {...vacancy} isVacancyList={true}/>
 				))
 			}
 			{status === 'succeeded' && totalPages > 1 && (

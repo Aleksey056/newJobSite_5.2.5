@@ -18,7 +18,7 @@ const VacancyPage = () => {
 
 	return (
 		<Box className={styles.VacancyPage}>
-			<VacancyCard {...vacancy} />
+			<VacancyCard {...vacancy} isVacancyList={false}/>
 			<Box className={styles.boxInfo}>
 				<div dangerouslySetInnerHTML={{ __html: vacancy?.description || '' }} />
 			</Box>

@@ -41,7 +41,9 @@
 
 .jobs__text {
 	font-weight: 500;
+	color: black;
 	font-size: 14px;
+	text-decoration: none;
 }
 
 .ellipse {

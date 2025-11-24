@@ -3,7 +3,7 @@ import styles from './VacancyCard.module.css'
 import type { WorkFormat } from '../../types/vacancy';
 import { Link } from 'react-router';
 
-const CardVacancy = ({ ...vacancy }) => {
+const CardVacancy = ({ isVacancyList, ...vacancy }) => {
 	const { name, alternate_url, id, salary, area, work_format, employer, experience } = vacancy
 
 	function formatSalary(
@@ -63,7 +63,7 @@ const CardVacancy = ({ ...vacancy }) => {
 
 			<Box className={styles.buttonGroup}>
 				<Link to={`/vacancies/${id}`} >
-					<Button variant="filled" size="sm" color="black" fw={400}>Смотреть вакансию</Button>
+					{isVacancyList ? <Button variant="filled" size="sm" color="black" fw={400} mr={12}>Смотреть вакансию</Button> : null}
 				</Link>
 
 				<Button
